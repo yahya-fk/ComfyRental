@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ComfyRentalApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ComfyRentalApplication.class, args);
+
+        SpringApplication.run(ComfyRentalApplication.class, "Hello world");
     }
 
 }
