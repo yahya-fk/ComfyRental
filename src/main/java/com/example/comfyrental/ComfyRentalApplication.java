@@ -8,7 +8,7 @@ public class ComfyRentalApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(ComfyRentalApplication.class, "Hello world");
+        SpringApplication.run(ComfyRentalApplication.class, "world");
     }
 
 }
