@@ -20,7 +20,7 @@ public class UserController {
     }
     @RequestMapping("saveUser")
     public String saveUser(@ModelAttribute("newUser") User newuser){
-        //userService.saveUser(newuser);
+        userService.saveUser(newuser);
         return "User/createUser";
     }
     @RequestMapping("/usersList")

@@ -1,5 +1,5 @@
 package com.example.comfyrental.Services;
-
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.example.comfyrental.Entities.User;
 import com.example.comfyrental.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -13,6 +13,9 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     @Override
     public User saveUser(User user) {
+       /* BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);*/
         return userRepository.save(user);
     }
 

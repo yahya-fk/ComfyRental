@@ -108,6 +108,10 @@
                         <hr>
                     </div>
                     <div class="row mt-3">
+                        <div class="form-group">
+                            <label for="firstName">Image Path:<span class="text-danger"> *</span></label>
+                            <input type="text" id="imgPath" class="form-control" required onblur="validate(1)" name="imgPath">
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <button class="btn btn-outline-primary w-100">Submit</button>
