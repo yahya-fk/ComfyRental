@@ -18,7 +18,9 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Img Path</th>
             <th>Email</th>
             <th>Role</th>
         </tr>
@@ -34,7 +36,9 @@
                 <c:forEach items="${UserList}" var="user">
                     <tr>
                         <td>${user.idU}</td>
-                        <td>${user.name}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.imgPath}</td>
                         <td>${user.email}</td>
                         <td>${user.password}</td>
                     </tr>
