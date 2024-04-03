@@ -32,7 +32,6 @@ public class Local {
     private List<Room> RoomList = new ArrayList<>();
     @OneToMany(mappedBy = "local")
     private List<LocalFeature> localFeatures = new ArrayList<>();
-
     private String addresse;
     private String city;
     private String type;
