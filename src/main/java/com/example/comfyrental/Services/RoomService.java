@@ -1,10 +1,12 @@
 package com.example.comfyrental.Services;
 
 import com.example.comfyrental.Entities.Room;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
+
 
 @Service
 public interface RoomService {
@@ -14,5 +16,4 @@ public interface RoomService {
     Room getroombyid(Long id);
 
     void deleteRoomById(Long id);
-    List<Room> getAllRooms( ); //je vais modifier ca apres pour qu'il recupere les Room depuis l'id 'un local
 }

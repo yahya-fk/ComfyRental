@@ -24,16 +24,12 @@ private RoomRepository roomRepository;
 
     @Override
     public Room getroombyid(Long id) {
-        return null;
+        return roomRepository.findById(id).get();
     }
 
     @Override
     public void deleteRoomById(Long id) {
-
+        roomRepository.deleteById(id);
     }
 
-    @Override
-    public List<Room> getAllRooms() {
-        return null;
-    }
 }

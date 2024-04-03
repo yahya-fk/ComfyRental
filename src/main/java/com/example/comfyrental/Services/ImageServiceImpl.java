@@ -2,15 +2,17 @@ package com.example.comfyrental.Services;
 
 import com.example.comfyrental.Entities.Image;
 import com.example.comfyrental.Repositories.ImageRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class ImageServiceImpl implements ImageService {
-    @Autowired
-    ImageRepository imgrepo;
+
+    private ImageRepository imgrepo;
     @Override
     public Image addImage(Image img) {
         return imgrepo.save(img);
