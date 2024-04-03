@@ -1,12 +1,12 @@
 package com.example.comfyrental.Entities;
 
-<<<<<<< HEAD
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-=======
+
 import jakarta.persistence.*;
->>>>>>> ea4c76643dc431dbf17034af6c262f3e749cb484
+
 
 import java.util.ArrayList;
 import java.util.List;
