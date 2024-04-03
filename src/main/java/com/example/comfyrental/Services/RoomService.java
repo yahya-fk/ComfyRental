@@ -10,10 +10,10 @@ import java.util.List;
 
 @Service
 public interface RoomService {
-    Room addRoom(Room r);
-    Room updateRoom(Room r);
-
-    Room getroombyid(Long id);
-
-    void deleteRoomById(Long id);
+    Room saveRoom(Room room);
+    Room updateReview(Room room);
+    Room findRoomById(long id);
+    List<Room> findAllRoom();
+    void deleteAllRoom();
+    void deleteRoomById(long id);
 }

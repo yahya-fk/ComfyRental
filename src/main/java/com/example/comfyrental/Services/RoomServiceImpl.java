@@ -12,24 +12,34 @@ import java.util.List;
 public class RoomServiceImpl implements RoomService{
 
 private RoomRepository roomRepository;
+
     @Override
-    public Room addRoom(Room room) {
-        return roomRepository.save(room); //l'IDE m'a suggere le cast je vais retraiter ce cas demain
+    public Room saveRoom(Room room) {
+        return null;
     }
 
     @Override
-    public Room updateRoom(Room r) {
-        return roomRepository.save(r);
+    public Room updateReview(Room room) {
+        return null;
     }
 
     @Override
-    public Room getroombyid(Long id) {
-        return roomRepository.findById(id).get();
+    public Room findRoomById(long id) {
+        return null;
     }
 
     @Override
-    public void deleteRoomById(Long id) {
-        roomRepository.deleteById(id);
+    public List<Room> findAllRoom() {
+        return null;
     }
 
+    @Override
+    public void deleteAllRoom() {
+
+    }
+
+    @Override
+    public void deleteRoomById(long id) {
+
+    }
 }
