@@ -18,13 +18,15 @@ public class User {
     private long idU;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
+    @Column(unique = true)
     private String imgPath;
     @OneToMany(mappedBy = "user")
     private List<Booking> bookingList = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<Favorite> favoriteList = new ArrayList<>();
+    @ManyToMany(mappedBy = "userList")
+    private List<Local> localList =new ArrayList();
     @OneToMany(mappedBy = "user")
     private List<Hosting> hostingList = new ArrayList<>();
     @OneToMany(mappedBy = "user")
