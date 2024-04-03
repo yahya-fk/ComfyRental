@@ -21,51 +21,5 @@ public class Hosting {
     @ManyToOne
     private Local local;
 
-    public Hosting(Date dateH, User user, Local local) {
-        this.dateH = dateH;
-        this.user = user;
-        this.local = local;
-    }
 
-    public long getIdH() {
-        return idH;
-    }
-
-    public void setIdH(long idH) {
-        this.idH = idH;
-    }
-
-    public Date getDateH() {
-        return dateH;
-    }
-
-    public void setDateH(Date dateH) {
-        this.dateH = dateH;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
-    }
-
-    @Override
-    public String toString() {
-        return "Hosting{" +
-                "idH=" + idH +
-                ", dateH=" + dateH +
-                ", user=" + user +
-                ", local=" + local +
-                '}';
-    }
 }
