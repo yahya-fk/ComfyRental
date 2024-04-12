@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,7 +20,10 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBill ;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date dateBill;
+    private float priceTotal;
     private BillStatusEnums billStatus=BillStatusEnums.waitPayment;
     private BillMethodEnums billMethod=BillMethodEnums.None;
     @OneToMany(mappedBy = "bill")

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@ include file="../Shared/Header.jsp"%>
+<%@ include file="../../../../resources/templates/Shared/Header.Html"%>
 
 <div  class="container">
     <h1>User List</h1>
@@ -14,7 +14,8 @@
             <th>Last Name</th>
             <th>Img Path</th>
             <th>Email</th>
-            <th>Role</th>
+            <th>Password</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,9 @@
                         <td>${user.imgPath}</td>
                         <td>${user.email}</td>
                         <td>${user.password}</td>
+                        <td><a class="btn btn-success " href="editUser?id=${user.idU}">Edit</a>
+                            <a class="btn btn-danger" href="deleteUser?id=${user.idU}">Delete</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </c:otherwise>
@@ -40,4 +44,4 @@
         </tbody>
     </table>
 </div>
-<%@ include file="../Shared/Footer.jsp"%>
+<%@ include file="../../../../resources/templates/Shared/Footer.html"%>

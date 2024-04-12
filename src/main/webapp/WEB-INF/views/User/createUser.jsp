@@ -20,9 +20,9 @@
                 </div>
             </div>
 
-            <div class="row">
-                <h6>Your Authentication Credentials</h6>
-                <hr>
+            <div class="row ">
+                <h6 class="mt-2 text-center">Your Authentication Credentials</h6>
+                <hr class="m-3 w-75 mx-auto">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email<span class="text-danger"> *</span></label>
@@ -35,17 +35,17 @@
                         <input type="password" id="password"  class="form-control" required onblur="validate(3)" name="password">
                     </div>
                 </div>
-                <hr>
+                <hr class="mt-3 w-75 mx-auto">
             </div>
             <div class="row mt-3">
                 <div class="form-group">
                     <label for="firstName">Image Path:<span class="text-danger"> *</span></label>
                     <input type="text" id="imgPath" class="form-control" required onblur="validate(1)" name="imgPath">
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <button class="btn btn-outline-primary w-100">Submit</button>
-                    </div>
+            </div>
+            <div class="col-md-12 m-3 mx-auto">
+                <div class="form-group">
+                    <button class="btn btn-outline-primary w-100">Submit</button>
                 </div>
             </div>
         </div>

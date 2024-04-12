@@ -1,0 +1,27 @@
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h4 class="text-center" th:text="${#authentication.name}">YAHYA FEKRANE & RIHAB NIKH</h4>
+            </li>
+            <li class="list-group-item p-0">
+              <a class="btn btn-outline-dark rounded-0 m-0 w-100" href="/usersList">User</a>
+            </li>
+            <li class="list-group-item p-0">
+              <form method="post" th:action="@{/logout}">
+                <button class="btn m-0 rounded-bottom btn-danger w-100" type="submit">Logout</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
