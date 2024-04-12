@@ -1,8 +1,9 @@
 package com.example.comfyrental.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Date;
 
 @Entity
 public class Review {
@@ -14,5 +15,7 @@ public class Review {
     private Local local;
     private String comment;
     private Long nbrStar;
-
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private Date dateR;
 }

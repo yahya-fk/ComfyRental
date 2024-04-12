@@ -1,21 +1,23 @@
 package com.example.comfyrental.Services;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.comfyrental.ComfyRentalApplication;
 import com.example.comfyrental.Entities.User;
 import com.example.comfyrental.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
-    @Override
+    PasswordEncoder passwordEncoder;    @Override
     public User saveUser(User user) {
-       /* BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);*/
+        user.setIdU(UUID.randomUUID().toString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findUserById(long id) {
+    public User findUserById(String id) {
         return userRepository.findById(id).get();
     }
 
@@ -51,7 +53,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUserById(long id) {
+    public void deleteUserById(String id) {
         userRepository.deleteById(id);
     }
+
+
+
 }

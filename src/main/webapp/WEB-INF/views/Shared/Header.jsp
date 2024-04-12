@@ -10,7 +10,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img style="width: 100px" src="../../../images/logoBlack.png" alt="Logo"></a>
+            <a class="navbar-brand" href="/"><img style="width: 130px; margin: 0px;padding: 0px ;" src="../../../webapp/images/logoBlack.png" alt="Logo"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,9 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/usersList">User</a>
                     </li>
                 </ul>
             </div>
@@ -32,12 +35,15 @@
     <main role="main" class="pb-3">
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Profile</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container">
                     <div class="row">
+                        <div class="list-group">
+                            <a class="list-group-item text-white bg-danger list-group-item-action" th:text="${#authentication.name}">Logout</a>
+                        </div>
                         <div class="list-group">
                             <a href="" class="list-group-item text-white bg-danger list-group-item-action">Logout</a>
                         </div>

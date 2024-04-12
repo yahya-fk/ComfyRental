@@ -14,8 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idU;
+    private String idU;
     private String firstName;
     private String lastName;
     @Column(unique = true)
