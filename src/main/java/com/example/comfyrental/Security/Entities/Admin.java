@@ -14,11 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Admin{
+public class Admin {
     @Id
     private String username;
     private String password;
     private int isEnabled;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles ;
+
+
 }
