@@ -14,7 +14,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
-    PasswordEncoder passwordEncoder;    @Override
+    PasswordEncoder passwordEncoder;
+    @Override
     public User saveUser(User user) {
         user.setIdU(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
