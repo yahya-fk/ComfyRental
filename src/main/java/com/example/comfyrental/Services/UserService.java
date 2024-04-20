@@ -14,5 +14,4 @@ public interface UserService {
     List<User> findAllUsers();
     void deleteAllUsers();
     void deleteUserById(String id);
-
-}
+    public User findUserByImage(String image);}
