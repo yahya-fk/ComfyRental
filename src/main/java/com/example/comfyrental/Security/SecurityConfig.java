@@ -28,7 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .anyRequest().permitAll()
+                                ./*anyRequest()*/requestMatchers("/Auth/**").permitAll().requestMatchers("/","/User/**").hasAnyRole("ADMIN")
                 ).csrf(csrf -> csrf.disable()).formLogin((form) -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/")
@@ -39,7 +39,7 @@ public class SecurityConfig {
 
         return http.build();
     }
-
+/*
     //@Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
@@ -48,11 +48,11 @@ public class SecurityConfig {
                 User.withUsername("RihabNIKH").password(passwordEncoder.encode("123")).roles("HOST").build()
         );
     }
-
+*/
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            Admin userEntity = adminService.FindUserById(username); // Assuming you have a method to find user by username
+            Admin userEntity = adminService.FindUserById(username);
             if (userEntity == null) {
                 throw new UsernameNotFoundException("User not found with username: " + username);
             }
@@ -60,7 +60,7 @@ public class SecurityConfig {
 
             return org.springframework.security.core.userdetails.User.builder()
                     .username(userEntity.getUsername())
-                    .password(passwordEncoder.encode(userEntity.getPassword()))
+                    .password(userEntity.getPassword())
                     .roles(roleNames.toArray(new String[0]))
                     .build();
         };

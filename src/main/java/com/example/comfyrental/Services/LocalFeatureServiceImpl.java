@@ -1,6 +1,8 @@
 package com.example.comfyrental.Services;
 
 import com.example.comfyrental.Entities.Bill;
+import com.example.comfyrental.Entities.LocalFeature;
+import com.example.comfyrental.Repositories.LocalFeatureRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,33 +11,36 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 public class LocalFeatureServiceImpl implements LocalFeatureService {
+    LocalFeatureRepository localFeatureRepository;
     @Override
-    public Bill saveBill(Bill bill) {
-        return null;
+    public LocalFeature saveLocalFeature(LocalFeature localFeature) {
+        return localFeatureRepository.save(localFeature);
     }
 
     @Override
-    public Bill updateBill(Bill bill) {
-        return null;
+    public LocalFeature updateLocalFeature(LocalFeature localFeature) {
+        return localFeatureRepository.save(localFeature);
     }
 
     @Override
-    public Bill findBillById(long id) {
-        return null;
+    public LocalFeature findLocalFeatureById(long id) {
+        return localFeatureRepository.findById(id).get();
     }
 
     @Override
-    public List<Bill> findAllBills() {
-        return null;
+    public List<LocalFeature> findAllLocalFeatures() {
+        return localFeatureRepository.findAll();
     }
 
     @Override
-    public void deleteAllBills() {
-
+    public void deleteAllLocalFeatures() {
+        localFeatureRepository.deleteAll();
     }
 
     @Override
-    public void deleteBillById(long id) {
-
+    public void deleteLocalFeatureById(long id) {
+        localFeatureRepository.deleteById(id);
     }
+
+
 }

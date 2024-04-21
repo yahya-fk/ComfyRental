@@ -1,5 +1,6 @@
 package com.example.comfyrental.Controllers;
 
+import com.example.comfyrental.Entities.Booking;
 import com.example.comfyrental.Entities.Hosting;
 import com.example.comfyrental.Services.HostingService;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,6 +29,18 @@ public class HostingController {
     public String hostingList(ModelMap modelMap){
         List<Hosting> hostingList=hostingService.findAllHosting();
         modelMap.addAttribute("HostingList", hostingList);
-        return "Hosting/hostingList";
+        return "Hosting/HostingList";
+    }
+    @RequestMapping("/deleteBooking")
+    public String deleteUser(@RequestParam("id") long id , ModelMap modelMap, ModelMap model){
+        try {
+            hostingService.deleteHostingById(id);
+            List<Hosting> hostingList=hostingService.findAllHosting();
+            modelMap.addAttribute("HostingList", hostingList);
+            model.addAttribute("successMessage", "Hosting Deleted successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Failed to delete hosting: " + e.getMessage());
+        }
+        return "Hosting/HostingList";
     }
 }
