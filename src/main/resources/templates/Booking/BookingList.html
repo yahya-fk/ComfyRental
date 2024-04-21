@@ -40,7 +40,7 @@
       <tr th:if="${#lists.isEmpty(bookingList)}">
         <td colspan="8">No Bookings found.</td>
       </tr>
-      <tr th:each="booking : ${bookingList}">
+      <tr th:each="booking : ${bookingList.content}">
         <td th:text="${booking.idB}"></td>
         <td th:text="${booking.user.firstName} + ' ' + ${booking.user.lastName}"></td>
         <td th:text="${booking.Local.idL} + '-' + ${booking.Local.name}"></td>
@@ -56,6 +56,13 @@
       </tr>
       </tbody>
     </table>
+    <ul class="nav nav-pills">
+      <li th:each="page,status:${pages}">
+        <a th:class="${status.index==currentPage?'btn btn-primary':'btn '}"
+           th:href="@{/Booking/bookingList(page=${status.index})}"
+           th:text="${status.index}"></a>
+      </li>
+    </ul>
   </div>
 </div>
 

@@ -4,6 +4,7 @@ import com.example.comfyrental.Entities.Bill;
 import com.example.comfyrental.Entities.Booking;
 import com.example.comfyrental.Services.BookingService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,16 +28,18 @@ public class BookingController {
         return "Booking/createBooking";
     }
     @RequestMapping("/bookingList")
-    public String bookingList(ModelMap modelMap){
-        List<Booking> bookingList=bookingService.findAllBookings();
+    public String bookingList(ModelMap modelMap ,@RequestParam ( name="page" , defaultValue = "0") int page ,@RequestParam ( name="size" , defaultValue = "5") int size ){
+        Page<Booking> bookingList=bookingService.findAllBookings(page, size);
         modelMap.addAttribute("bookingList", bookingList);
+        modelMap.addAttribute("currentPage", page);
+        modelMap.addAttribute("pages", new int[bookingList.getTotalPages()]);
         return "Booking/BookingList";
     }
     @RequestMapping("/deleteBooking")
     public String deleteUser(@RequestParam("id") long id , ModelMap modelMap, ModelMap model){
         try {
             bookingService.deleteBookingById(id);
-            List<Booking> bookingList=bookingService.findAllBookings();
+            Page<Booking> bookingList=bookingService.findAllBookings(0, 10);
             modelMap.addAttribute("bookingList", bookingList);
             model.addAttribute("successMessage", "Booking Deleted successfully!");
         } catch (Exception e) {

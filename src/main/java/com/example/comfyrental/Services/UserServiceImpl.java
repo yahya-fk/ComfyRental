@@ -4,6 +4,8 @@ import com.example.comfyrental.ComfyRentalApplication;
 import com.example.comfyrental.Entities.User;
 import com.example.comfyrental.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +57,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public Page<User> findAllUsers(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page,size));
     }
 
     @Override

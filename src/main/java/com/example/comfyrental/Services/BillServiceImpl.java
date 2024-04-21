@@ -3,6 +3,8 @@ package com.example.comfyrental.Services;
 import com.example.comfyrental.Entities.Bill;
 import com.example.comfyrental.Repositories.BillRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +31,12 @@ public class BillServiceImpl implements BillService{
     @Override
     public List<Bill> findAllBills() {
         return billRepository.findAll();
+    }
+
+    @Override
+    public Page<Bill> findAllBills(int page, int size) {
+        return billRepository.findAll(PageRequest.of(page,size));
+
     }
 
     @Override
