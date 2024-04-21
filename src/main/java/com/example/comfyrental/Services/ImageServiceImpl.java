@@ -30,16 +30,16 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<Image> findAllImages() {
-        return null;
+        return imgrepo.findAll();
     }
 
     @Override
     public void deleteAllImages() {
-
+        imgrepo.deleteAll();
     }
 
     @Override
     public void deleteImageById(long id) {
-
+        imgrepo.deleteById(id);
     }
 }

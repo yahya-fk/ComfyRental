@@ -13,31 +13,32 @@ public class HostingServiceImpl implements HostingService{
     HostingRepository hostingRepository;
     @Override
     public Hosting saveHosting(Hosting hosting) {
-        return null;
+        return hostingRepository.save(hosting);
     }
 
     @Override
     public Hosting updateHosting(Hosting hosting) {
-        return null;
+        return hostingRepository.save(hosting);
+
     }
 
     @Override
     public Hosting findHostingById(long id) {
-        return null;
+        return hostingRepository.findById(id).get();
     }
 
     @Override
     public List<Hosting> findAllHosting() {
-        return null;
+        return hostingRepository.findAll();
     }
 
     @Override
     public void deleteAllHosting() {
-
+        hostingRepository.deleteAll();
     }
 
     @Override
     public void deleteHostingById(long id) {
-
+        hostingRepository.deleteById(id);
     }
 }

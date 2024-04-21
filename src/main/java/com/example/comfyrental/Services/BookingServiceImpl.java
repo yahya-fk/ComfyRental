@@ -13,31 +13,31 @@ public class BookingServiceImpl implements BookingService{
     BookingRepository bookingRepository;
     @Override
     public Booking saveBooking(Booking booking) {
-        return null;
+        return bookingRepository.save(booking);
     }
 
     @Override
     public Booking updateBooking(Booking booking) {
-        return null;
+        return bookingRepository.save(booking);
     }
 
     @Override
     public Booking findBookingById(long id) {
-        return null;
+        return bookingRepository.findById(id).get();
     }
 
     @Override
     public List<Booking> findAllBookings() {
-        return null;
+        return bookingRepository.findAll();
     }
 
     @Override
     public void deleteAllBookings() {
-
+        bookingRepository.deleteAll();
     }
 
     @Override
     public void deleteBookingById(long id) {
-
+        bookingRepository.deleteById(id);
     }
 }

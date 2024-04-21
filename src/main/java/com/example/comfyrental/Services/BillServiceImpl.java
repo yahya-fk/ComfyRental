@@ -10,34 +10,34 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class BillServiceImpl implements BillService{
-    BillRepository billRepository;
+    private BillRepository billRepository;
     @Override
     public Bill saveBill(Bill bill) {
-        return null;
+        return billRepository.save(bill);
     }
 
     @Override
     public Bill updateBill(Bill bill) {
-        return null;
+        return billRepository.save(bill);
     }
 
     @Override
     public Bill findBillById(long id) {
-        return null;
+        return billRepository.findById(id).get();
     }
 
     @Override
     public List<Bill> findAllBills() {
-        return null;
+        return billRepository.findAll();
     }
 
     @Override
     public void deleteAllBills() {
-
+        billRepository.deleteAll();
     }
 
     @Override
     public void deleteBillById(long id) {
-
+        billRepository.deleteById(id);
     }
 }

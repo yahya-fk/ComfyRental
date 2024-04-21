@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/User")
 public class UserController {
     private UserService userService;
     @RequestMapping("/createUser")
@@ -20,8 +21,13 @@ public class UserController {
         return "User/createUser";
     }
     @RequestMapping("saveUser")
-    public String saveUser(@ModelAttribute("newUser") User newuser){
-        userService.saveUser(newuser);
+    public String saveUser(@ModelAttribute("newUser") User newuser,ModelMap model){
+        try {
+            userService.saveUser(newuser);
+            model.addAttribute("successMessage", "User saved successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Failed to save user: " + e.getMessage());
+        }
         return "User/createUser";
     }
     @RequestMapping("/usersList")
@@ -35,7 +41,15 @@ public class UserController {
         return "User/usersList";
     }
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("id") String id ,ModelMap modelMap){
+    public String deleteUser(@RequestParam("id") String id ,ModelMap modelMap,ModelMap model){
+        try {
+            userService.deleteUserById(id);
+            List<User> userList=userService.findAllUsers();
+            modelMap.addAttribute("UserList", userList);
+            model.addAttribute("successMessage", "User Deleted successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Failed to delete user: " + e.getMessage());
+        }
         userService.deleteUserById(id);
         List<User> userList=userService.findAllUsers();
         modelMap.addAttribute("UserList", userList);
@@ -48,11 +62,17 @@ public class UserController {
         return "User/editUser";
     }
     @RequestMapping("editUser")
-    public String editUser(@ModelAttribute("editedUser") User editedUser ,ModelMap modelMap){
-        userService.saveUser(editedUser);
-        List<User> userList=userService.findAllUsers();
-        modelMap.addAttribute("UserList", userList);
-        return "User/usersList";
+    public String editUser(@ModelAttribute("editedUser") User editedUser ,ModelMap modelMap,ModelMap model){
+        try {
+            userService.saveUser(editedUser);
+            List<User> userList=userService.findAllUsers();
+            modelMap.addAttribute("UserList", userList);
+
+            model.addAttribute("successMessage", "User edited successfully!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Failed to edit user: " + e.getMessage());
+        }
+               return "User/usersList";
     }
 
 

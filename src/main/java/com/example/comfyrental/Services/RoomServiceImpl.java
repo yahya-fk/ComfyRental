@@ -11,35 +11,35 @@ import java.util.List;
 @Service
 public class RoomServiceImpl implements RoomService{
 
-private RoomRepository roomRepository;
+    private RoomRepository roomRepository;
 
     @Override
     public Room saveRoom(Room room) {
-        return null;
+        return roomRepository.save(room);
     }
 
     @Override
     public Room updateReview(Room room) {
-        return null;
+        return roomRepository.save(room);
     }
 
     @Override
     public Room findRoomById(long id) {
-        return null;
+        return roomRepository.findById(id).get();
     }
 
     @Override
     public List<Room> findAllRoom() {
-        return null;
+        return roomRepository.findAll();
     }
 
     @Override
     public void deleteAllRoom() {
-
+        roomRepository.deleteAll();
     }
 
     @Override
     public void deleteRoomById(long id) {
-
+        roomRepository.deleteById(id);
     }
 }
