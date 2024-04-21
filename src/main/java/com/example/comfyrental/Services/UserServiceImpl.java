@@ -42,7 +42,16 @@ public class UserServiceImpl implements UserService{
         }
         return null;
     }
-
+    @Override
+    public User findUserByImage(String image) {
+        List<User> UserList =findAllUsers();
+        for (User user:UserList) {
+            if(image.equals(user.getImgPath())){
+                return user;
+            }
+        }
+        return null;
+    }
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
