@@ -35,7 +35,7 @@
       <tr th:if="${#lists.isEmpty(hostingList)}">
         <td colspan="5">No Hosting found.</td>
       </tr>
-      <tr th:each="hosting : ${hostingList}">
+      <tr th:each="hosting : ${hostingList.content}">
         <td th:text="${hosting.idH}"></td>
         <td th:text="${hosting.user.firstName} + ' ' + ${hosting.user.lastName}"></td>
         <td th:text="${hosting.local.name}"></td>
@@ -46,6 +46,13 @@
       </tr>
       </tbody>
     </table>
+    <ul class="nav nav-pills">
+      <li th:each="page,status:${pages}">
+        <a th:class="${status.index==currentPage?'btn btn-primary':'btn '}"
+           th:href="@{/Hosting/hostingList(page=${status.index})}"
+           th:text="${status.index}"></a>
+      </li>
+    </ul>
   </div>
 </div>
 

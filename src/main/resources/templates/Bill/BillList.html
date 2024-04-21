@@ -37,7 +37,7 @@
       <tr th:if="${#lists.isEmpty(billList)}">
         <td colspan="6">No Bills found.</td>
       </tr>
-      <tr th:each="bill : ${billList}">
+      <tr th:each="bill : ${billList.content}">
         <td th:text="${bill.idBill}"></td>
         <td th:text="${bill.user.firstName}+' '+${bill.user.lastName}"></td>
         <td th:text="${bill.dateBill}"></td>
@@ -50,6 +50,13 @@
       </tr>
       </tbody>
     </table>
+    <ul class="nav nav-pills">
+      <li th:each="page,status:${pages}">
+        <a th:class="${status.index==currentPage?'btn btn-primary':'btn '}"
+           th:href="@{/Bill/billList(page=${status.index})}"
+           th:text="${status.index}"></a>
+      </li>
+    </ul>
   </div>
 </div>
 

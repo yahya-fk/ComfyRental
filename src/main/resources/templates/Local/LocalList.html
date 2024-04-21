@@ -36,7 +36,7 @@
       <tr th:if="${#lists.isEmpty(localList)}">
         <td colspan="5">No Locals found.</td>
       </tr>
-      <tr th:each="local : ${localList}">
+      <tr th:each="local : ${localList.content}">
         <td th:text="${local.idL}"></td>
         <td th:text="${local.name}"></td>
         <td th:text="${local.addresse}"></td>
@@ -48,6 +48,13 @@
       </tr>
       </tbody>
     </table>
+    <ul class="nav nav-pills">
+      <li th:each="page,status:${pages}">
+        <a th:class="${status.index==currentPage?'btn btn-primary':'btn '}"
+           th:href="@{/Local/localList(page=${status.index})}"
+           th:text="${status.index}"></a>
+      </li>
+    </ul>
   </div>
 </div>
 
