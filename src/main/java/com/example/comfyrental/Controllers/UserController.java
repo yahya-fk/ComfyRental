@@ -35,7 +35,7 @@ public class UserController {
     }
     @RequestMapping("/usersList")
     public String usersList(ModelMap modelMap ,@RequestParam ( name="page" , defaultValue = "0") int page ,@RequestParam ( name="size" , defaultValue = "5") int size ){
-        Page<User> userList=userService.findAllUsers(page,size);
+            Page<User> userList=userService.findAllUsers(page,size);
         for (User user:userList) {
             user.setPassword(user.getPassword().substring(0,10)+"...");
 

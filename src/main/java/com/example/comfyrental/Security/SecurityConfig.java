@@ -31,7 +31,7 @@ public class SecurityConfig {
                                 ./*anyRequest()*/requestMatchers("/Auth/**").permitAll().requestMatchers("/","/User/**","/Bill/**","/Booking/**","/Hosting/**","/Local/**").hasAnyRole("ADMIN")
                 ).csrf(csrf -> csrf.disable()).formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/",true)
                         .permitAll()
                 ).logout((logout) -> logout.permitAll())
                 .exceptionHandling(exceptionHandling-> exceptionHandling.accessDeniedPage("/accessDenied"))

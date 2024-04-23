@@ -21,7 +21,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBill ;
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateBill;
     private float priceTotal;
     private BillStatusEnums billStatus=BillStatusEnums.waitPayment;

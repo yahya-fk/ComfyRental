@@ -22,6 +22,6 @@ public class Review {
     private String comment;
     private Long nbrStar;
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateR;
 }
