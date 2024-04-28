@@ -6,7 +6,17 @@ import com.example.comfyrental.Services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.Files;
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 @AllArgsConstructor
@@ -16,7 +26,7 @@ public class UserRestController {
     private final UserService userService;
     PasswordEncoder passwordEncoder;
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String savePerson(@RequestBody User user) {
+    public String saveUser(@RequestBody User user) {
         if(userService.findUserByEmail(user.getEmail()) != null){
             return "Email Already Exist";
         }
@@ -31,6 +41,23 @@ public class UserRestController {
                 return "Error";
             }
 
+        }
+    }
+    @PostMapping("/ProfileImage/upload")
+    public String uploadProfileImage(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return "Please select a file to upload.";
+        }
+        try {
+            byte[] bytes = file.getBytes();
+            String directory = "C:/Users/hp/Downloads/ComfyRental/src/main/java/com/example/comfyrental/ProfileImage/";
+            String fileName = file.getOriginalFilename();
+            Path filePath = Paths.get(directory, fileName);
+            Files.write(filePath, bytes);
+            return filePath.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Failed to upload file.";
         }
     }
     @GetMapping(value = "/show/{id}")
