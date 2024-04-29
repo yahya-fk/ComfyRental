@@ -17,4 +17,7 @@ public interface UserService {
     Page<User> findAllUsers(int page , int size);
     void deleteAllUsers();
     void deleteUserById(String id);
-    public User findUserByImage(String image);}
+    public User findUserByImage(String image);
+    User saveUserImage(String userId, String imagePath);}
+
+
