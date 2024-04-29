@@ -26,7 +26,6 @@ public class Local {
     @ManyToMany
     @JoinTable(name = "Favorite")
     private List<User> userList =new ArrayList();
-
     @OneToMany(mappedBy = "local")
     private List<Hosting> hostingList = new ArrayList<>();
     @OneToMany(mappedBy = "local")

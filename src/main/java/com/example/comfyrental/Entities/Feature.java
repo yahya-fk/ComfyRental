@@ -16,7 +16,7 @@ public class Feature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdF;
-    private Long nameFeature;
+    private String nameFeature;
   @OneToMany(mappedBy = "feature")
     private List<LocalFeature> localFeaturesList = new ArrayList<>();
 
