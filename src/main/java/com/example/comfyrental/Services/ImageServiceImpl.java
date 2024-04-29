@@ -31,7 +31,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<Image> findAllImages() {
-        return imgrepo.findAll();
+        return imgrepo.findAllByOrderByLocal();
     }
 
     @Override

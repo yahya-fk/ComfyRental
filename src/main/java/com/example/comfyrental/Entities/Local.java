@@ -1,6 +1,7 @@
 package com.example.comfyrental.Entities;
 
 
+import com.example.comfyrental.Enums.TypeEnums;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -32,15 +33,14 @@ public class Local {
     private List<Review> reviewList = new ArrayList<>();
     @OneToMany(mappedBy = "local")
     private List<Image> ImagesList = new ArrayList<>();
-
     @OneToMany(mappedBy = "local")
     private List<Room> RoomList = new ArrayList<>();
     @OneToMany(mappedBy = "local")
     private List<LocalFeature> localFeatures = new ArrayList<>();
     private String addresse;
     private String city;
-    private String type;
+    private TypeEnums type;
+    private String descLocal;
     private String name;
-
-
+    private String price;
 }
