@@ -36,13 +36,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findUserByEmail(String email) {
-        List<User> UserList =findAllUsers();
-        for (User user:UserList) {
-            if(email.equals(user.getEmail())){
-                return user;
-            }
-        }
-        return null;
+        return userRepository.findUserByEmail(email);
     }
     @Override
     public User findUserByImage(String image) {

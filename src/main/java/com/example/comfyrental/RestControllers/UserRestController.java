@@ -6,7 +6,6 @@ import com.example.comfyrental.Services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.nio.file.Files;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,8 +49,13 @@ public class UserRestController {
         }
         try {
             byte[] bytes = file.getBytes();
-            String directory = "C:/Users/hp/Downloads/ComfyRental/src/main/java/com/example/comfyrental/ProfileImage/";
-            String fileName = file.getOriginalFilename();
+            String directory = "static/Images/";
+            File dir = new File(directory);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            System.out.println(dir.getAbsolutePath());
+            String fileName ="Image";
             Path filePath = Paths.get(directory, fileName);
             Files.write(filePath, bytes);
             return filePath.toString();
