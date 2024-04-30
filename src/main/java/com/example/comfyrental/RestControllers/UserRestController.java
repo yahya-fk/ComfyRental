@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -49,16 +50,16 @@ public class UserRestController {
         }
         try {
             byte[] bytes = file.getBytes();
-            String directory = "static/Images/";
+            String directory = "Images/Profile/";
             File dir = new File(directory);
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            System.out.println(dir.getAbsolutePath());
-            String fileName ="Image";
+            String fileName = UUID.randomUUID()+".jpg";
             Path filePath = Paths.get(directory, fileName);
             Files.write(filePath, bytes);
-            return filePath.toString();
+            System.out.println(dir.getAbsolutePath().replace("\\","/")+"/"+fileName);
+            return dir.getAbsolutePath().replace("\\","/")+"/"+fileName;
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed to upload file.";
