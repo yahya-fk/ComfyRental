@@ -12,4 +12,6 @@ public class CardModel {
     private String[] imgList;
     private String title;
     private String price;
+    private String dateStart;
+    private String dateEnd;
 }
