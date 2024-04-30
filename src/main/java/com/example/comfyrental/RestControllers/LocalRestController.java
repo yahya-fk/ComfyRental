@@ -1,11 +1,10 @@
 package com.example.comfyrental.RestControllers;
-<<<<<<< HEAD
+import com.example.comfyrental.Models.LocalDetailModel;
 import com.example.comfyrental.Services.LocalService;
 import com.example.comfyrental.Entities.Local;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
-=======
 
 import com.example.comfyrental.Entities.Image;
 import com.example.comfyrental.Models.CardModel;
@@ -20,23 +19,36 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
->>>>>>> 8c161ed6ee02c092601b12c13d10b3ca7eb28e9b
 @RestController
 @AllArgsConstructor
 @RequestMapping("/local")
 @CrossOrigin(origins = "*")
 public class LocalRestController {
-<<<<<<< HEAD
+    ImageService imageService;
     private final LocalService localService;
     @GetMapping(value = "/LocalDetails/{id}")
-    public Local showLocal(@PathVariable long id) {
-        return localService.findLocalById(id);
+    public LocalDetailModel showLocal(@PathVariable long id) {
+        Local local =  localService.findLocalById(id);
+        if (local == null){
+            return null;
+        }
+        LocalDetailModel localDetailModel = new LocalDetailModel();
+        localDetailModel.setDescLocal(local.getDescLocal());
+        localDetailModel.setName(local.getName());
+        localDetailModel.setCity(local.getCity());
+        localDetailModel.setAddresse(local.getAddresse());
+        localDetailModel.setPrice(local.getPrice());
+        localDetailModel.setType(local.getType());
+        String[] imgList = new String[5];
+        int i = 0;
+        for (Image image: local.getImagesList()     ) {
+            imgList[i] = image.getImagePath();
+            i++;
+        }
+        localDetailModel.setImgPathList(imgList);
+        return localDetailModel;
     }
-}
 
-=======
-    LocalService localService;
-    ImageService imageService;
     @GetMapping(value = "/showALL")
     public List<CardModel> showAllPerson() {
         List<Image> imageList = imageService.findAllImages();
@@ -60,4 +72,3 @@ public class LocalRestController {
     }
 
 }
->>>>>>> 8c161ed6ee02c092601b12c13d10b3ca7eb28e9b
