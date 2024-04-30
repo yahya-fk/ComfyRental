@@ -1,4 +1,10 @@
 package com.example.comfyrental.RestControllers;
+import com.example.comfyrental.Models.LocalDetailModel;
+import com.example.comfyrental.Services.LocalService;
+import com.example.comfyrental.Entities.Local;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.comfyrental.Entities.Hosting;
 import com.example.comfyrental.Entities.Image;
@@ -20,8 +26,31 @@ import java.util.List;
 @RequestMapping("/local")
 @CrossOrigin(origins = "*")
 public class LocalRestController {
-    LocalService localService;
     ImageService imageService;
+    private final LocalService localService;
+    @GetMapping(value = "/LocalDetails/{id}")
+    public LocalDetailModel showLocal(@PathVariable long id) {
+        Local local =  localService.findLocalById(id);
+        if (local == null){
+            return null;
+        }
+        LocalDetailModel localDetailModel = new LocalDetailModel();
+        localDetailModel.setDescLocal(local.getDescLocal());
+        localDetailModel.setName(local.getName());
+        localDetailModel.setCity(local.getCity());
+        localDetailModel.setAddresse(local.getAddresse());
+        localDetailModel.setPrice(local.getPrice());
+        localDetailModel.setType(local.getType());
+        String[] imgList = new String[5];
+        int i = 0;
+        for (Image image: local.getImagesList()     ) {
+            imgList[i] = image.getImagePath();
+            i++;
+        }
+        localDetailModel.setImgPathList(imgList);
+        return localDetailModel;
+    }
+
     @GetMapping(value = "/showALL")
     public List<CardModel> showAllLocal() {
         List<Image> imageList = imageService.findAllImages();
