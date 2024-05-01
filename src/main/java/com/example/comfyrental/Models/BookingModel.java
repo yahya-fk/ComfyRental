@@ -22,6 +22,6 @@ public class BookingModel {
     private Date dateB;
     private Date dateStart;
     private Date dateEnd;
-    private Double price;
+    private String price;
     private BookingStatusEnums bookingStatus=BookingStatusEnums.waitPayment;
 }
