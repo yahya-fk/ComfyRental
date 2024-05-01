@@ -73,9 +73,22 @@ public class UserRestController {
     public List<User> showAllPerson() {
         return userService.findAllUsers();
     }
-    @PutMapping(value = "/update")
-    public User updatePerson( @RequestBody User updatedPerson) {
-        return userService.saveUser(updatedPerson);
+
+    @PutMapping(value = "/Update/{idU}")
+    public User updatePerson(@PathVariable String idU, @RequestBody User updatedPerson) {
+        System.out.println("haya l ID: " + idU);
+        User existingUser = userService.findUserById(idU);
+        System.out.println("Hawa l user l9ah: " + existingUser);
+        if (existingUser == null) {
+            System.out.println("User not found");
+            return null;
+        }
+        System.out.println("hawa l user jdid"+ updatedPerson);
+        existingUser.setLastName(updatedPerson.getLastName());
+        existingUser.setFirstName(updatedPerson.getFirstName());
+        existingUser.setPassword(passwordEncoder.encode(updatedPerson.getPassword()));
+
+        return userService.updateUser(existingUser);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)

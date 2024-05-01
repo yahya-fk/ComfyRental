@@ -23,7 +23,7 @@ public class Bill {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateBill;
-    private float priceTotal;
+    private Double priceTotal;
     private BillStatusEnums billStatus=BillStatusEnums.waitPayment;
     private BillMethodEnums billMethod=BillMethodEnums.None;
     @OneToMany(mappedBy = "bill")
