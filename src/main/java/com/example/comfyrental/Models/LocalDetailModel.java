@@ -15,6 +15,6 @@ public class LocalDetailModel {
     private TypeEnums type;
     private String descLocal;
     private String name;
-    private String price;
+    private Double price;
 
 }
