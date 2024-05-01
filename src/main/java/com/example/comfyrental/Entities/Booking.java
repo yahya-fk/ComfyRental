@@ -27,7 +27,7 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateEnd;
-    private Double price;
+    private float price;
     private BookingStatusEnums bookingStatus=BookingStatusEnums.waitPayment;
     @ManyToOne
     private Bill bill;

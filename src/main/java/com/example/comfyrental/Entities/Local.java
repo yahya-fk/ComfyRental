@@ -42,5 +42,5 @@ public class Local {
     private TypeEnums type;
     private String descLocal;
     private String name;
-    private Double price;
+    private String price;
 }
