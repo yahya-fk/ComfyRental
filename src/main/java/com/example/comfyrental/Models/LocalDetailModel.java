@@ -16,5 +16,9 @@ public class LocalDetailModel {
     private String descLocal;
     private String name;
     private String price;
+    private String dateStart;
+    private String dateEnd;
+    private String HostName;
+    private String HostPic;
 
 }
