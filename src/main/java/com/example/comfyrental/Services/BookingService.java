@@ -17,4 +17,6 @@ public interface BookingService {
     void deleteAllBookings();
     void deleteBookingById(long id);
 
+
+    List<Booking> findAllBookingByUserId(String id);
 }
