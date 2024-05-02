@@ -75,7 +75,7 @@ public class UserRestController {
     }
 
     @PutMapping(value = "/Update/{idU}")
-    public User updatePerson(@PathVariable String idU, @RequestBody User updatedPerson) {
+    public UserLogin updatePerson(@PathVariable String idU, @RequestBody User updatedPerson) {
         System.out.println("haya l ID: " + idU);
         User existingUser = userService.findUserById(idU);
         System.out.println("Hawa l user l9ah: " + existingUser);
@@ -88,7 +88,9 @@ public class UserRestController {
         existingUser.setFirstName(updatedPerson.getFirstName());
         existingUser.setPassword(passwordEncoder.encode(updatedPerson.getPassword()));
 
-        return userService.updateUser(existingUser);
+        UserLogin userLogin = new UserLogin(existingUser.getEmail(), existingUser.getPassword(), existingUser.getIdU(),
+        existingUser.getFirstName(), existingUser.getLastName(), existingUser.getImgPath());
+        return userLogin;
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)

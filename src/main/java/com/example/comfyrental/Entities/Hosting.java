@@ -29,6 +29,14 @@ public class Hosting {
     private User user;
     @ManyToOne
     private Local local;
-
+    @Override
+    public String toString() {
+        return "Hosting{" +
+                "idH=" + idH +
+                ", dateH=" + dateH +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                '}';
+    }
 
 }

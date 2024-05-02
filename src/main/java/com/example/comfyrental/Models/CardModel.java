@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class CardModel {
     private String[] imgList;
     private String title;
-    private Double price;
+    private String price;
     private String dateStart;
     private String dateEnd;
 }

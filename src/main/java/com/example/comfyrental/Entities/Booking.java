@@ -35,5 +35,18 @@ public class Booking {
     private User user;
     @ManyToOne
     private Local local;
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "idB=" + idB +
+                ", dateB=" + dateB +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", price=" + price +
+                ", bookingStatus=" + bookingStatus +
+                '}';
+    }
+
+
 
 }

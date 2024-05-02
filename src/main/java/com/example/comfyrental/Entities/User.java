@@ -30,4 +30,14 @@ public class User {
     private List<Hosting> hostingList = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Review> reviewList = new ArrayList<>();
+    @Override
+    public String toString() {
+        return "User{" +
+                "idU='" + idU + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                '}';
+    }
 }

@@ -21,7 +21,7 @@ public class BookingRestController {
     public List<BookingModel> showBooking(@PathVariable String user_idu) {
         List<Booking> bookings = bookingService.findAllBookingByUserId(user_idu);
 
-        if (bookings == null){
+        if (bookings == null) {
             return null;
         }
 
@@ -40,4 +40,17 @@ public class BookingRestController {
 
         return bookingModels;
     }
+    @DeleteMapping(value = "/Delete/{idB}")
+    public String DeleteReservation(@PathVariable long idB) {
+
+        try {
+            bookingService.deleteBookingById(idB);
+            System.out.println("Reservation deleted successfully");
+            return "Reservation deleted successfully";
+        } catch (Exception e) {
+            System.out.println("Error Deleting Reservation");
+            return "Error Deleting Reservation";
+        }
+    }
+
 }
