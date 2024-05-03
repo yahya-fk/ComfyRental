@@ -29,5 +29,19 @@ public class Bill {
     private List<Booking> bookingList = new ArrayList<>();
     @ManyToOne
     private User user;
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "idBill=" + idBill +
+                ", dateBill=" + dateBill +
+                ", priceTotal=" + priceTotal +
+                ", billStatus=" + billStatus +
+                ", billMethod=" + billMethod +
+                '}';
+    }
+
+
+
+
 
 }

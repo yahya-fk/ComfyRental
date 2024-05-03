@@ -12,6 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
@@ -39,5 +40,14 @@ public class User {
         this.lastName=userRegisterModel.getLastName();
         this.email=userRegisterModel.getEmail();
         this.password=userRegisterModel.getPassword();
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "idU='" + idU + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

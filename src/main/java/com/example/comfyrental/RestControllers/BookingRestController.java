@@ -81,4 +81,17 @@ public class BookingRestController {
         }
 
     }
+    @DeleteMapping(value = "/Delete/{idB}")
+    public String DeleteReservation(@PathVariable long idB) {
+
+        try {
+            bookingService.deleteBookingById(idB);
+            System.out.println("Reservation deleted successfully");
+            return "Reservation deleted successfully";
+        } catch (Exception e) {
+            System.out.println("Error Deleting Reservation");
+            return "Error Deleting Reservation";
+        }
+    }
+
 }
