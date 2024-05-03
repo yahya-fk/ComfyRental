@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService{
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
-    @Override
+    /*@Override
     public User findUserByImage(String image) {
         List<User> UserList =findAllUsers();
         for (User user:UserList) {
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
             }
         }
         return null;
-    }
+    }*/
 
     @Override
     public User saveUserImage(String userId, String imagePath) {

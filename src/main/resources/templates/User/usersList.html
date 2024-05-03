@@ -26,7 +26,6 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Img Path</th>
                 <th>Email</th>
                 <th>Password</th>
                 <th></th>
@@ -39,7 +38,6 @@
             <tr th:each="user : ${UserList.content}">
                 <td th:text="${user.firstName}">First Name</td>
                 <td th:text="${user.lastName}">Last Name</td>
-                <td th:text="${user.imgPath}">Img Path</td>
                 <td th:text="${user.email}">Email</td>
                 <td th:text="${user.password}">Password</td>
                 <td>

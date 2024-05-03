@@ -41,10 +41,11 @@ public class LocalRestController {
         localDetailModel.setAddresse(local.getAddresse());
         localDetailModel.setPrice(local.getPrice());
         localDetailModel.setType(local.getType());
-        localDetailModel.setHostPic(local.getHostingList().get(0).getUser().getImgPath());
+        localDetailModel.setHostPic(local.getHostingList().get(0).getUser().getImg());
         localDetailModel.setHostName(local.getHostingList().get(0).getUser().getFirstName()+" "+local.getHostingList().get(0).getUser().getLastName());
         localDetailModel.setDateStart(local.getHostingList().get(0).getDateStart().toString());
         localDetailModel.setDateEnd(local.getHostingList().get(0).getDateEnd().toString());
+        localDetailModel.setLocalId(local.getIdL());
         String[] imgList = new String[5];
         int i = 0;
         for (Image image: local.getImagesList()     ) {

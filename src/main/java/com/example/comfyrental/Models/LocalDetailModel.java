@@ -15,6 +15,11 @@ public class LocalDetailModel {
     private TypeEnums type;
     private String descLocal;
     private String name;
-    private Double price;
+    private String price;
+    private byte[] hostPic;
+    private String hostName;
+    private String dateStart;
+    private String dateEnd;
+    private long localId;
 
 }

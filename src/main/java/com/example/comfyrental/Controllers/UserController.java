@@ -38,7 +38,6 @@ public class UserController {
             Page<User> userList=userService.findAllUsers(page,size);
         for (User user:userList) {
             user.setPassword(user.getPassword().substring(0,10)+"...");
-
         }
         modelMap.addAttribute("UserList", userList);
         modelMap.addAttribute("currentPage", page);
