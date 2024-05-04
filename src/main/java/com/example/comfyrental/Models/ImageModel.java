@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ImageModel {
     private Long IdI;
-    private String ImagePath;
+    private byte[] ImagePath;
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User{
     @Id
     private String idU;
     private String firstName;

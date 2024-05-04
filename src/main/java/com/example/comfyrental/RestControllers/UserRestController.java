@@ -1,4 +1,5 @@
 package com.example.comfyrental.RestControllers;
+import com.example.comfyrental.Models.UserProfileModel;
 import com.example.comfyrental.Models.UserRegisterModel;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -67,8 +68,8 @@ public class UserRestController {
         }
     }
     @GetMapping(value = "/show/{id}")
-    public User showPerson(@PathVariable String id) {
-        return userService.findUserById(id);
+    public UserProfileModel showPerson(@PathVariable String id) {
+        return new UserProfileModel(userService.findUserById(id));
     }
     @GetMapping(value = "/showALL")
     public List<User> showAllPerson() {
@@ -90,7 +91,7 @@ public class UserRestController {
         existingUser.setPassword(passwordEncoder.encode(updatedPerson.getPassword()));
 
         UserLogin userLogin = new UserLogin(existingUser.getEmail(), existingUser.getPassword(), existingUser.getIdU(),
-        existingUser.getFirstName(), existingUser.getLastName(), existingUser.getImgPath());
+        existingUser.getFirstName(), existingUser.getLastName());
         return userLogin;
     }
 
@@ -104,13 +105,13 @@ public class UserRestController {
         return userService.findUserByEmail(email);
     }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User Login(@RequestBody UserLogin userLogin) {
+    public UserProfileModel Login(@RequestBody UserLogin userLogin) {
         User user = userService.findUserByEmail(userLogin.getEmail());
         if (user == null) return null;
         else {
             System.out.println(userLogin.getPassword()+"      "  +user.getPassword());
             if (passwordEncoder.matches(userLogin.getPassword(),user.getPassword())) {
-                return /*user.getEmail()*/user;
+                return new UserProfileModel(user);
             }else{
                 return null;
             }

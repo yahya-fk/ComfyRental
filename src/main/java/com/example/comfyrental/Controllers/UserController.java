@@ -68,7 +68,6 @@ public class UserController {
             userService.saveUser(editedUser);
             List<User> userList=userService.findAllUsers();
             modelMap.addAttribute("UserList", userList);
-
             model.addAttribute("successMessage", "User edited successfully!");
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Failed to edit user: " + e.getMessage());

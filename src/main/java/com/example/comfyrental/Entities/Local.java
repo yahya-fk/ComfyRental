@@ -2,6 +2,7 @@ package com.example.comfyrental.Entities;
 
 
 import com.example.comfyrental.Enums.TypeEnums;
+import com.example.comfyrental.Models.LocalNew;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -20,6 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Local {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idL;
     @OneToMany(mappedBy = "local")
     private List<Booking> bookingList = new ArrayList<>();
@@ -42,4 +44,13 @@ public class Local {
     private String descLocal;
     private String name;
     private String price;
+
+    public Local(LocalNew localNew) {
+        this.addresse = localNew.getAddress();
+        this.city = localNew.getCity();
+        this.type = TypeEnums.valueOf (localNew.getType());
+        this.descLocal = localNew.getDescLocal();
+        this.name = localNew.getName();
+        this.price = localNew.getPrice();
+    }
 }

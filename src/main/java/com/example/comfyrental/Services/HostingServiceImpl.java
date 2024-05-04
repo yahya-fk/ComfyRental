@@ -60,17 +60,17 @@ public class HostingServiceImpl implements HostingService{
             List<ImageModel> imageModels = new ArrayList<>();
             for (Image image : localImages) {
                 ImageModel imageModel = new ImageModel();
-                imageModel.setImagePath(image.getImagePath());
+                imageModel.setImagePath(image.getImg());
                 imageModel.setIdI(image.getIdI());
                 imageModels.add(imageModel);
             }
 
 
-            List<String> imagePathList = new ArrayList<>();
+            List<byte[]> imagePathList = new ArrayList<>();
             for (ImageModel imageModel : imageModels) {
                 imagePathList.add(imageModel.getImagePath());
             }
-            String[] imgPathArray = imagePathList.toArray(new String[0]);
+            byte[][] imgPathArray = imagePathList.toArray(new byte[0][]);
 
             LocalDetailModel localDetail = new LocalDetailModel(
                     imgPathArray,

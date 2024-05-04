@@ -13,6 +13,9 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdI;
     private String ImagePath;
+    @Lob
+    @Column(nullable = true, columnDefinition="longblob")
+    private byte[] img;
     @ManyToOne
     private Local local;
 
