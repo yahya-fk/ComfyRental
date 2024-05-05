@@ -81,7 +81,7 @@ public class HostingServiceImpl implements HostingService{
                     hostedLocal.getLocal().getName(),
                     hostedLocal.getLocal().getPrice()
             );
-
+localDetail.setIdL(hostedLocal.getLocal().getIdL());
             hostedLocals.add(localDetail);
         }
         return hostedLocals;

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LocalDetailModel {
+    private Long idL;
     private String[] imgPathList;
     private String addresse;
     private String city;
@@ -17,4 +18,13 @@ public class LocalDetailModel {
     private String name;
     private String price;
 
+    public LocalDetailModel(String[] imgPathList, String addresse, String city, TypeEnums type, String descLocal, String name, String price) {
+        this.imgPathList = imgPathList;
+        this.addresse = addresse;
+        this.city = city;
+        this.type = type;
+        this.descLocal = descLocal;
+        this.name = name;
+        this.price = price;
+    }
 }
