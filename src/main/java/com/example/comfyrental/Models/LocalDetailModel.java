@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LocalDetailModel {
     private byte[][] imgPathList;
+    private Long idL;
     private String addresse;
     private String city;
     private TypeEnums type;

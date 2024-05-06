@@ -1,11 +1,10 @@
 package com.example.comfyrental.Repositories;
 
 import com.example.comfyrental.Entities.Booking;
-import com.example.comfyrental.Entities.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Locale;
+
 
 @Repository
 
