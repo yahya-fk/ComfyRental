@@ -27,7 +27,6 @@
         <th>Id Booking</th>
         <th>User</th>
         <th>Local</th>
-        <th>Bill</th>
         <th>Date Booking</th>
         <th>Date Start</th>
         <th>Date End</th>
@@ -44,7 +43,6 @@
         <td th:text="${booking.idB}"></td>
         <td th:text="${booking.user.firstName} + ' ' + ${booking.user.lastName}"></td>
         <td th:text="${booking.Local.idL} + '-' + ${booking.Local.name}"></td>
-        <td th:text="${booking.Bill.idBill} + '-' + ${booking.Bill.priceTotal}"></td>
         <td th:text="${booking.dateB}"></td>
         <td th:text="${booking.dateStart}"></td>
         <td th:text="${booking.dateEnd}"></td>

@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Data
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +35,18 @@ public class Booking {
     private User user;
     @ManyToOne
     private Local local;
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "idB=" + idB +
+                ", dateB=" + dateB +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", price=" + price +
+                ", bookingStatus=" + bookingStatus +
+                '}';
+    }
+
+
 
 }

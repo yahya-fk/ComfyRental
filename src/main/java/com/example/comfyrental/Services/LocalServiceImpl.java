@@ -1,5 +1,6 @@
 package com.example.comfyrental.Services;
 
+import com.example.comfyrental.Entities.Booking;
 import com.example.comfyrental.Entities.Local;
 import com.example.comfyrental.Enums.TypeEnums;
 import com.example.comfyrental.Repositories.LocalRepository;
@@ -51,4 +52,19 @@ public class LocalServiceImpl implements LocalService{
     public void deleteLocalById(long id) {
         localRepository.deleteById(id);
     }
+    public Long findBookingIdByUserAndLocalId(long localId, String guestId) {
+        Local local = findLocalById(localId);
+        if (local != null) {
+            List<Booking> bookingList = local.getBookingList();
+            for (Booking booking : bookingList) {
+                if (guestId.equals(booking.getUser().getIdU())) {
+                    return booking.getIdB();
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 }

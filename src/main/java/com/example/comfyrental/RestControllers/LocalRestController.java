@@ -1,6 +1,7 @@
 package com.example.comfyrental.RestControllers;
 import com.example.comfyrental.Models.LocalDetailModel;
-import com.example.comfyrental.Services.LocalService;
+import com.example.comfyrental.Models.LocalNew;
+import com.example.comfyrental.Services.*;
 import com.example.comfyrental.Entities.Local;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,6 @@ import com.example.comfyrental.Entities.Local;
 import com.example.comfyrental.Entities.User;
 import com.example.comfyrental.Enums.TypeEnums;
 import com.example.comfyrental.Models.CardModel;
-import com.example.comfyrental.Services.HostingService;
-import com.example.comfyrental.Services.ImageService;
 import com.example.comfyrental.Services.LocalService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +27,7 @@ import java.util.List;
 public class LocalRestController {
     ImageService imageService;
     private final LocalService localService;
+
     @GetMapping(value = "/LocalDetails/{id}")
     public LocalDetailModel showLocal(@PathVariable long id) {
         Local local =  localService.findLocalById(id);
@@ -41,10 +41,15 @@ public class LocalRestController {
         localDetailModel.setAddresse(local.getAddresse());
         localDetailModel.setPrice(local.getPrice());
         localDetailModel.setType(local.getType());
-        String[] imgList = new String[5];
-        int i = 0;
-        for (Image image: local.getImagesList()     ) {
-            imgList[i] = image.getImagePath();
+        localDetailModel.setHostPic(local.getHostingList().get(0).getUser().getImg());
+        localDetailModel.setHostName(local.getHostingList().get(0).getUser().getFirstName()+" "+local.getHostingList().get(0).getUser().getLastName());
+        localDetailModel.setDateStart(local.getHostingList().get(0).getDateStart().toString());
+        localDetailModel.setDateEnd(local.getHostingList().get(0).getDateEnd().toString());
+        localDetailModel.setLocalId(local.getIdL());
+        byte[][] imgList = new byte[5][];
+        int i=0;
+        for (Image image:local.getImagesList()) {
+            imgList[i] = image.getImg();
             i++;
         }
         localDetailModel.setImgPathList(imgList);
@@ -59,14 +64,15 @@ public class LocalRestController {
             CardModel cardModel = new CardModel();
             List<Image> subList = imageList.subList(i, Math.min(i + 5, imageList.size()));
 
-            String[] imgList = new String[subList.size()];
+            byte[][] imgList = new byte[subList.size()][];
             for (int j = 0; j < subList.size(); j++) {
-                imgList[j] = subList.get(j).getImagePath();
+                imgList[j] = subList.get(j).getImg();
             }
             cardModel.setDateStart(subList.get(0).getLocal().getHostingList().get(0).getDateStart().toString());
             cardModel.setDateEnd(subList.get(0).getLocal().getHostingList().get(0).getDateEnd().toString());
             cardModel.setTitle(subList.get(0).getLocal().getName());
             cardModel.setPrice(subList.get(0).getLocal().getPrice());
+            cardModel.setIdL(subList.get(0).getLocal().getIdL());
             cardModel.setImgList(imgList);
             cardModels.add(cardModel);
         }
@@ -78,20 +84,22 @@ public class LocalRestController {
         List<CardModel> cardModels = new ArrayList<>();
         for (Local local:localList) {
             CardModel cardModel = new CardModel();
-            String[] imgList = new String[5];
+            byte[][] imgList = new byte[5][];
             int i=0;
             for (Image image:local.getImagesList()) {
-                imgList[i] = image.getImagePath();
+                imgList[i] = image.getImg();
                 i++;
             }
             cardModel.setDateStart(local.getHostingList().get(0).getDateStart().toString());
             cardModel.setDateEnd(local.getHostingList().get(0).getDateEnd().toString());
             cardModel.setTitle(local.getName());
             cardModel.setPrice(local.getPrice());
+            cardModel.setIdL(local.getIdL());
             cardModel.setImgList(imgList);
             cardModels.add(cardModel);
         }
         return cardModels;
     }
+
 
 }

@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 @Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class Room {
     @Id

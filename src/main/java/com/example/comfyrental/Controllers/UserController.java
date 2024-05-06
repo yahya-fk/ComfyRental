@@ -38,7 +38,6 @@ public class UserController {
             Page<User> userList=userService.findAllUsers(page,size);
         for (User user:userList) {
             user.setPassword(user.getPassword().substring(0,10)+"...");
-
         }
         modelMap.addAttribute("UserList", userList);
         modelMap.addAttribute("currentPage", page);
@@ -69,7 +68,6 @@ public class UserController {
             userService.saveUser(editedUser);
             List<User> userList=userService.findAllUsers();
             modelMap.addAttribute("UserList", userList);
-
             model.addAttribute("successMessage", "User edited successfully!");
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Failed to edit user: " + e.getMessage());
