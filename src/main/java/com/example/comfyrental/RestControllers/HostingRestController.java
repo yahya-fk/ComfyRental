@@ -34,8 +34,7 @@ public class HostingRestController {
     UserService userService;
     private final LocalService localService;
     ImageService imageService;
-    private final LocalService localService;
-private final BookingService bookingService;
+    private final BookingService bookingService;
     @GetMapping(value = "/ShowALL/{user_idu}")
     public List<LocalDetailModel> showBooking(@PathVariable String user_idu) {
        return hostingService.getHosetedLocalsByUserIds(user_idu);}
@@ -57,6 +56,7 @@ private final BookingService bookingService;
            return "Error";
        }
     }
+
     @PostMapping("/image/{id}")
     public String uploadProfileImage(@RequestParam("file") MultipartFile file, @PathVariable String id){
         if (file.isEmpty()) {
@@ -73,9 +73,6 @@ private final BookingService bookingService;
             e.printStackTrace();
             return "Failed to upload file.";
         }
-    }
-
-        return hostingService.getHosetedLocalsByUserIds(user_idu);
     }
 
     @GetMapping(value = "/ShowAllRequests/{user_id}")
