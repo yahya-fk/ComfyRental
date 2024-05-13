@@ -19,7 +19,6 @@ public class Admin {
     @Id
     private String username;
     private String password;
-    private String ImgSrc;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles ;
 

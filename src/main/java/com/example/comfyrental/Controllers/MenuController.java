@@ -14,10 +14,12 @@ public class MenuController {
     public String userLogin(){
         return "User/userLogin";
     }
+
     @RequestMapping("/")
     public String MainPage(){
         return "Menu/MainPage";
     }
+
     @RequestMapping("/accessDenied")
     public String accessDenied(){
         return "Menu/AccessDenied";
