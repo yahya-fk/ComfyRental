@@ -1,10 +1,14 @@
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+# First stage: Build the application
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-
-COPY . .
-RUN mvn clean package -Dskiptests
-
-FROM openjdk:21-slim
-COPY --from=build /target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
+# Second stage: Run the application
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+COPY --from=build /app/target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "ComfyRental.jar"]
