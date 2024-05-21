@@ -23,8 +23,7 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    @Bean
-    @Lazy
+    //@Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
