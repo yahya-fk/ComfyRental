@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,7 +23,10 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    private final PasswordEncoder passwordEncoder;
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
     AdminService adminService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

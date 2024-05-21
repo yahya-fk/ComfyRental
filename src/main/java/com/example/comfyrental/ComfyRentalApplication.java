@@ -13,9 +13,6 @@ public class ComfyRentalApplication {
 
         SpringApplication.run(ComfyRentalApplication.class, "Hello world");
     }
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+
 
 }
