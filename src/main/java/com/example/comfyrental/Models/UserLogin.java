@@ -23,7 +23,6 @@ public class UserLogin {
     private String idU;
     private String firstName;
     private String lastName;
-    private String imgPath;
 
 
 }

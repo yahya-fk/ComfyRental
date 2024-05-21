@@ -10,7 +10,6 @@ import java.sql.Date;
 
 @Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class Review {
     @Id

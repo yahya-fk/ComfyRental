@@ -1,6 +1,7 @@
 package com.example.comfyrental.Services;
 
 import com.example.comfyrental.Entities.Booking;
+import com.example.comfyrental.Entities.Local;
 import com.example.comfyrental.Entities.User;
 import com.example.comfyrental.Repositories.BookingRepository;
 import lombok.AllArgsConstructor;
@@ -51,7 +52,18 @@ public class BookingServiceImpl implements BookingService {
     public void deleteBookingById(long id) {
         bookingRepository.deleteById(id);
     }
-@Override
+
+    @Override
+    public List<Booking> findAllBookingByLocal(long local) {
+        return bookingRepository.findByLocal_IdL(local);
+    }
+
+    @Override
+    public List<Booking> findAllBookingByLocalAndUser(long local, String user) {
+        return bookingRepository.findByLocal_IdLAndUser_IdU(local,user);
+    }
+
+    @Override
     public List<Booking> findAllBookingByUserId(String id) {
         List<Booking> Lbu = new ArrayList<>();
         List<Booking> bookings = findAllBookings();

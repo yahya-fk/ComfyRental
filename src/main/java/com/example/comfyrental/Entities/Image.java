@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdI;
-    private String ImagePath;
+    @Lob
+    @Column(nullable = true, columnDefinition="longblob")
+    private byte[] img;
     @ManyToOne
     private Local local;
 

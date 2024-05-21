@@ -28,7 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                ./*anyRequest()*/requestMatchers("/Auth/**","/local/**").permitAll().requestMatchers("/","/User/**","/Bill/**","/Booking/**","/Hosting/**","/Local/**").hasAnyRole("ADMIN")
+                                ./*anyRequest()*/requestMatchers("/Auth/**","/local/**","/Reservations/**").permitAll().requestMatchers("/","/User/**","/Bill/**","/Booking/**","/Hosting/**","/Local/**").hasAnyRole("ADMIN")
                 ).csrf(csrf -> csrf.disable()).formLogin((form) -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/",true)

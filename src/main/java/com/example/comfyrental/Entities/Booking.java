@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Data
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

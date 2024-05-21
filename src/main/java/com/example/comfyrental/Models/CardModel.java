@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CardModel {
-    private String[] imgList;
+    private byte[][] imgList;
     private String title;
     private String price;
     private String dateStart;
     private String dateEnd;
+    private long idL;
 }
