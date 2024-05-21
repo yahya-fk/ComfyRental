@@ -1,8 +1,17 @@
-FROM maven:3.9.6-openjdk21 AS build
-COPY . .
-RUN mvn clean package -Dskiptests
+# First stage: Build the application
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+# Add custom Maven settings
+COPY settings.xml /root/.m2/settings.xml
+# Download dependencies (not using go-offline due to plugin resolution issue)
+RUN mvn dependency:resolve
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-FROM openjdk:21.0.0-jdk-slim
-COPY --from=build /target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
+# Second stage: Run the application
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+COPY --from=build /app/target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","ComfyRental.jar"]
+ENTRYPOINT ["java", "-jar", "ComfyRental.jar"]
