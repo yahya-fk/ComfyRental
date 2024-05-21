@@ -69,13 +69,6 @@ private final BookingService bookingService;
                         System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
                         System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
                         System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
-                        System.out.println("Request accepted with local id = "+localId+"and guest id = "+guestId);
 
                         return "Request accepted with local id = "+localId+"and guest id = "+guestId;
                     }
