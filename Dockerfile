@@ -2,9 +2,7 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
-# Add custom Maven settings
 COPY settings.xml /root/.m2/settings.xml
-# Download dependencies (not using go-offline due to plugin resolution issue)
 RUN mvn dependency:resolve
 COPY src ./src
 RUN mvn clean package -DskipTests
