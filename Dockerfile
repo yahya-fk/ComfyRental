@@ -26,6 +26,6 @@ RUN mvn clean package -DskipTests
 # Second stage: Run the application
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-COPY --from=build /app/target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
+COPY --from=build /target/ComfyRental-0.0.1-SNAPSHOT.jar ComfyRental.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "ComfyRental.jar"]
