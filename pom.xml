@@ -89,7 +89,7 @@
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                           <mainClass>com.example.comfy rental.ComfyRentalApplication</mainClass>
+                           <mainClass>com.example.comfyrental.ComfyRentalApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
