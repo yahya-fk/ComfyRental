@@ -89,7 +89,7 @@
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            <mainClass>com.example.MainApplicationClass</mainClass> <!-- Replace with your main class -->
+                           <mainClass>com.example.comfyrental.ComfyRentalApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
