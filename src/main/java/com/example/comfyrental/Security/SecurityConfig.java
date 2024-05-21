@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 @Configuration
 public class SecurityConfig {
     @Bean
+    @Lazy
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
