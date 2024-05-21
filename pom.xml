@@ -75,7 +75,6 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.9.6</version> <!-- Update the version to a version that supports Java 17 -->
             <configuration>
                 <release>17</release> <!-- Specify the Java version to use -->
             </configuration>
