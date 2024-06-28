@@ -1,15 +1,12 @@
 package com.example.comfyrental.RestControllers;
 
-import com.example.comfyrental.Entities.Bill;
-import com.example.comfyrental.Entities.Local;
-import com.example.comfyrental.Entities.User;
+import com.example.comfyrental.Entities.*;
 import com.example.comfyrental.Enums.BillMethodEnums;
 import com.example.comfyrental.Enums.BillStatusEnums;
 import com.example.comfyrental.Enums.BookingStatusEnums;
 import com.example.comfyrental.Models.BookingModel;
 import com.example.comfyrental.Models.BookingSaveModel;
 import com.example.comfyrental.Services.BookingService;
-import com.example.comfyrental.Entities.Booking;
 import com.example.comfyrental.Services.LocalService;
 import com.example.comfyrental.Services.UserService;
 import lombok.AllArgsConstructor;
@@ -18,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @AllArgsConstructor
@@ -92,6 +87,25 @@ public class BookingRestController {
             System.out.println("Error Deleting Reservation");
             return "Error Deleting Reservation";
         }
+    }
+    @RequestMapping("/getLocalDetails/{bookingId}")
+    @ResponseBody
+    public Map<String, String> getLocalDetails(@PathVariable("bookingId") long bookingId) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            Booking booking = bookingService.findBookingById(bookingId);
+            if (booking != null && booking.getLocal() != null) {
+                Local local = booking.getLocal();
+                response.put("localName", local.getName());
+                if (!local.getImagesList().isEmpty()) {
+                    Image firstImage = local.getImagesList().get(0);
+                    response.put("localImage", Base64.getEncoder().encodeToString(firstImage.getImg()));
+                }
+            }
+        } catch (Exception e) {
+            response.put("error", "Failed to retrieve local details: " + e.getMessage());
+        }
+        return response;
     }
 
 }
